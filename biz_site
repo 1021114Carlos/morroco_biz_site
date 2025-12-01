@@ -1,0 +1,497 @@
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
+import { PhoneCall, Calendar, CheckCircle2, Globe2, ShieldCheck } from "lucide-react";
+
+const faqs = [
+  {
+    question: "How do I know if my business is ready to outsource bookkeeping?",
+    answer:
+      "If you are spending more time chasing receipts, reconciling accounts, or worrying about compliance than actually running your business, you are ready. We help you move your books into a clean, organized system so you can focus on growth.",
+  },
+  {
+    question: "Do you work remotely or only with local businesses?",
+    answer:
+      "We work securely with businesses both locally and remotely. We use encrypted portals and modern accounting tools so you can upload documents, review reports, and communicate with us from anywhere.",
+  },
+  {
+    question: "What software do you use (QuickBooks, Xero, etc.)?",
+    answer:
+      "We primarily work with leading cloud-based accounting platforms such as QuickBooks Online and Xero, but we can review your current setup and recommend the best option for your size and industry.",
+  },
+  {
+    question: "How is pricing structured for your services?",
+    answer:
+      "After a short discovery call, we provide a clear, written quote based on transaction volume, payroll complexity, and any additional services such as business formation or compliance support. No hidden fees, ever.",
+  },
+  {
+    question: "What do you need from me to get started?",
+    answer:
+      "During your free 30-minute consultation, we will ask a few targeted questions about your business, current accounting systems, and goals. Then we will request secure access to your bank statements, prior financials, and any payroll or tax accounts.",
+  },
+];
+
+const services = [
+  {
+    title: "Bookkeeping & Financial Records",
+    description:
+      "Monthly reconciliations, categorized transactions, and clean financial statements so you always know where your business stands.",
+    points: [
+      "Monthly/quarterly bookkeeping",
+      "Clean-up & catch-up projects",
+      "Profit & loss, balance sheet, cash-flow",
+    ],
+  },
+  {
+    title: "Payroll Services",
+    description:
+      "Accurate, on-time payroll for you and your team, including tax withholdings and filings.",
+    points: [
+      "Employee & contractor payroll",
+      "Payroll tax payments & filings",
+      "Year-end forms (W-2, 1099)",
+    ],
+  },
+  {
+    title: "Business Formation",
+    description:
+      "Guidance to choose and set up the right business structure for your goals.",
+    points: [
+      "LLC and corporation setup support",
+      "Coordination with tax professionals",
+      "Registration and documentation guidance",
+    ],
+  },
+  {
+    title: "Compliance & Advisory",
+    description:
+      "Ongoing support to help you stay organized, compliant, and ready for growth.",
+    points: [
+      "Sales & use tax guidance",
+      "Basic compliance reminders",
+      "Simple, clear financial insights",
+    ],
+  },
+];
+
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
+const App = () => {
+  const [formStatus, setFormStatus] = useState(null);
+  const [previewMode, setPreviewMode] = useState(true);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFormStatus("Thanks! Your request was received. We will email you to confirm your free 30-minute consultation.");
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-50 flex flex-col">
+      {/* Header / Nav */}
+      <header className="sticky top-0 z-40 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+          <div
+            className="flex cursor-pointer items-center gap-2"
+            onClick={() => scrollToSection("hero")}
+          >
+            <ShieldCheck className="h-6 w-6" />
+            <span className="font-semibold tracking-tight">ClarityBooks Financial</span>
+          </div>
+          <nav className="hidden gap-6 text-sm md:flex">
+            <button onClick={() => scrollToSection("services")} className="hover:text-indigo-300">
+              Services
+            </button>
+            <button onClick={() => scrollToSection("about")} className="hover:text-indigo-300">
+              About
+            </button>
+            <button onClick={() => scrollToSection("faq")} className="hover:text-indigo-300">
+              Questions
+            </button>
+            <button onClick={() => scrollToSection("consultation")} className="hover:text-indigo-300">
+              Free Consultation
+            </button>
+          </nav>
+          <div className="flex items-center gap-3">
+            <div className="hidden text-xs sm:flex sm:flex-col sm:items-end">
+              <span className="flex items-center gap-1">
+                <PhoneCall className="h-3 w-3" />
+                <span>Call or text:</span>
+              </span>
+              <span className="font-mono text-sm">(555) 123-4567</span>
+            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              className="text-xs"
+              onClick={() => setPreviewMode((p) => !p)}
+            >
+              {previewMode ? "Hide Preview Highlights" : "Show Preview Highlights"}
+            </Button>
+          </div>
+        </div>
+      </header>
+
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section
+          id="hero"
+          className="border-b border-slate-800 bg-gradient-to-b from-slate-950 to-slate-900"
+        >
+          <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 py-16 md:flex-row md:items-center">
+            <motion.div
+              className="flex-1 space-y-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900 px-3 py-1 text-xs text-slate-300">
+                <CheckCircle2 className="h-3 w-3" />
+                <span>Bookkeeping • Payroll • Business Formation • Compliance</span>
+              </div>
+              <h1 className="text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
+                Your numbers, handled. Your business, free to grow.
+              </h1>
+              <p className="max-w-xl text-sm text-slate-300 md:text-base">
+                We provide clear, reliable bookkeeping and back-office support so you can stop
+                worrying about spreadsheets and start focusing on sales, service, and growth.
+                Bilingual support available in English and Spanish.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Button
+                  size="lg"
+                  className="text-sm"
+                  onClick={() => scrollToSection("consultation")}
+                >
+                  <Calendar className="mr-2 h-4 w-4" />
+                  Book your free 30-minute consultation
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="text-sm"
+                  onClick={() => scrollToSection("services")}
+                >
+                  View services
+                </Button>
+              </div>
+              <div className="flex flex-wrap gap-6 pt-4 text-xs text-slate-400">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="h-4 w-4" /> 15+ years combined experience
+                </div>
+                <div className="flex items-center gap-2">
+                  <Globe2 className="h-4 w-4" /> Remote-friendly & bilingual (EN/ES)
+                </div>
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="h-4 w-4" /> Confidential & secure workflows
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="flex-1"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <Card
+                className={`border-slate-700 bg-slate-900/70 shadow-xl ${
+                  previewMode ? "ring-2 ring-indigo-400/60" : ""
+                }`}
+              >
+                <CardContent className="space-y-4 p-6">
+                  <h2 className="text-lg font-semibold">Website Preview Panel</h2>
+                  <p className="text-xs text-slate-300">
+                    This block simulates how your service pitch might look to visitors. Edit the
+                    copy to match your own brand, location, and contact details.
+                  </p>
+                  <div className="rounded-lg border border-slate-700 bg-slate-950/60 p-4 text-xs text-slate-200">
+                    <p className="font-semibold">ClarityBooks Financial Records</p>
+                    <p>Specialized bookkeeping and back-office support for small businesses.</p>
+                    <p className="mt-2 italic text-slate-400">
+                      "Your peace of mind starts with clean books and clear numbers."
+                    </p>
+                    <div className="mt-3 flex flex-wrap gap-2 text-[0.7rem]">
+                      <span className="rounded-full bg-slate-800 px-2 py-1">Bookkeeping</span>
+                      <span className="rounded-full bg-slate-800 px-2 py-1">Payroll</span>
+                      <span className="rounded-full bg-slate-800 px-2 py-1">Business Formation</span>
+                      <span className="rounded-full bg-slate-800 px-2 py-1">Compliance</span>
+                    </div>
+                  </div>
+                  <p className="text-[0.7rem] text-slate-400">
+                    Toggle the <span className="font-semibold">Preview Highlights</span> button in the
+                    top-right corner to highlight the sections you may want to customize first.
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Services Section */}
+        <section id="services" className="border-b border-slate-800 bg-slate-950">
+          <div className="mx-auto max-w-6xl px-4 py-16">
+            <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+              <div>
+                <h2 className="text-2xl font-semibold tracking-tight">Services</h2>
+                <p className="max-w-xl text-sm text-slate-300">
+                  Everything you need to stay organized, compliant, and confident about your
+                  business finances.
+                </p>
+              </div>
+              <p className="text-xs text-slate-400">
+                All services are offered in English or Spanish, in person or remotely.
+              </p>
+            </div>
+            <div className="grid gap-6 md:grid-cols-2">
+              {services.map((service) => (
+                <Card
+                  key={service.title}
+                  className={`border-slate-800 bg-slate-900/70 transition hover:-translate-y-1 hover:border-indigo-400/70 hover:shadow-lg ${
+                    previewMode ? "ring-1 ring-indigo-500/40" : ""
+                  }`}
+                >
+                  <CardContent className="space-y-3 p-6">
+                    <h3 className="text-lg font-semibold">{service.title}</h3>
+                    <p className="text-sm text-slate-300">{service.description}</p>
+                    <ul className="space-y-1 text-xs text-slate-300">
+                      {service.points.map((point) => (
+                        <li key={point} className="flex items-start gap-2">
+                          <CheckCircle2 className="mt-0.5 h-3 w-3" />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* About Section */}
+        <section id="about" className="border-b border-slate-800 bg-slate-950">
+          <div className="mx-auto max-w-6xl px-4 py-16">
+            <div className="grid gap-8 md:grid-cols-[1.3fr,1fr] md:items-center">
+              <div>
+                <h2 className="text-2xl font-semibold tracking-tight">About the Firm</h2>
+                <p className="mt-4 text-sm text-slate-300">
+                  ClarityBooks Financial Records was created to give small business owners a
+                  partner they can trust with their day-to-day finances. We understand that
+                  bookkeeping, payroll, and compliance can feel overwhelming when you are trying to
+                  run operations, manage a team, and serve your customers.
+                </p>
+                <p className="mt-3 text-sm text-slate-300">
+                  Our mission is simple: keep your books clean, your records organized, and your
+                  questions answered in plain language. Whether you are just launching your
+                  business or have been operating for years, we meet you where you are and build a
+                  system that fits.
+                </p>
+                <p className="mt-3 text-sm text-slate-300">
+                  We also understand the importance of language access. That is why we offer
+                  bilingual support in English and Spanish, so you never feel left out of the
+                  conversation about your own business.
+                </p>
+              </div>
+              <div>
+                <Card
+                  className={`border-slate-800 bg-slate-900/80 ${
+                    previewMode ? "ring-1 ring-indigo-500/40" : ""
+                  }`}
+                >
+                  <CardContent className="space-y-3 p-6 text-sm text-slate-200">
+                    <h3 className="text-base font-semibold">Fast Snapshot</h3>
+                    <ul className="space-y-2 text-xs text-slate-300">
+                      <li className="flex items-center justify-between">
+                        <span>Experience with small businesses</span>
+                        <span className="font-semibold">15+ years</span>
+                      </li>
+                      <li className="flex items-center justify-between">
+                        <span>Languages</span>
+                        <span className="font-semibold">English & Spanish</span>
+                      </li>
+                      <li className="flex items-center justify-between">
+                        <span>Engagement style</span>
+                        <span className="font-semibold">Remote & local-ready</span>
+                      </li>
+                      <li className="flex items-center justify-between">
+                        <span>Ideal client</span>
+                        <span className="font-semibold">Service & trade businesses</span>
+                      </li>
+                    </ul>
+                    <p className="pt-2 text-[0.7rem] text-slate-400">
+                      Customize this box with your real city, license details, and any
+                      certifications you want to highlight.
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ / Critical Questions Section */}
+        <section id="faq" className="border-b border-slate-800 bg-slate-950">
+          <div className="mx-auto max-w-6xl px-4 py-16">
+            <div className="mb-6 max-w-xl space-y-2">
+              <h2 className="text-2xl font-semibold tracking-tight">5 key questions clients ask</h2>
+              <p className="text-sm text-slate-300">
+                These are the conversations we have with almost every new client. Feel free to
+                adjust the questions and answers to match your exact process.
+              </p>
+            </div>
+            <Accordion type="single" collapsible className="space-y-3">
+              {faqs.map((faq, idx) => (
+                <AccordionItem
+                  key={faq.question}
+                  value={`faq-${idx}`}
+                  className={`border border-slate-800 rounded-lg px-3 ${
+                    previewMode ? "ring-1 ring-indigo-500/30" : ""
+                  }`}
+                >
+                  <AccordionTrigger className="text-left text-sm font-medium text-slate-100">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="pb-4 text-xs text-slate-300">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </section>
+
+        {/* Free Consultation Section */}
+        <section
+          id="consultation"
+          className="border-b border-slate-800 bg-gradient-to-r from-indigo-900/40 via-slate-950 to-slate-950"
+        >
+          <div className="mx-auto max-w-6xl px-4 py-16">
+            <div className="grid gap-8 md:grid-cols-[1.2fr,1fr] md:items-center">
+              <div>
+                <h2 className="text-2xl font-semibold tracking-tight">
+                  Schedule your free 30-minute consultation
+                </h2>
+                <p className="mt-3 text-sm text-slate-200">
+                  In this no-pressure call, we will review where your books are today, what tools
+                  you are using, and what support would make the biggest difference for you over
+                  the next 3–6 months.
+                </p>
+                <ul className="mt-4 space-y-2 text-xs text-slate-200">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="mt-0.5 h-3 w-3" />
+                    <span>30 minutes focused entirely on your business questions.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="mt-0.5 h-3 w-3" />
+                    <span>No obligation to sign up for ongoing services.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="mt-0.5 h-3 w-3" />
+                    <span>Clear next steps if we are a good fit to work together.</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <Card
+                  className={`border-slate-800 bg-slate-950/80 shadow-lg ${
+                    previewMode ? "ring-1 ring-indigo-500/40" : ""
+                  }`}
+                >
+                  <CardContent className="space-y-4 p-6">
+                    <h3 className="text-base font-semibold">Request your free session</h3>
+                    <form onSubmit={handleSubmit} className="space-y-3 text-xs">
+                      <div className="space-y-1">
+                        <label className="block text-slate-200" htmlFor="name">
+                          Name
+                        </label>
+                        <input
+                          id="name"
+                          required
+                          className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-xs text-slate-100 outline-none focus:border-indigo-400"
+                          placeholder="Your full name"
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <label className="block text-slate-200" htmlFor="email">
+                          Email
+                        </label>
+                        <input
+                          id="email"
+                          type="email"
+                          required
+                          className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-xs text-slate-100 outline-none focus:border-indigo-400"
+                          placeholder="you@example.com"
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <label className="block text-slate-200" htmlFor="business">
+                          Business name (optional)
+                        </label>
+                        <input
+                          id="business"
+                          className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-xs text-slate-100 outline-none focus:border-indigo-400"
+                          placeholder="What type of business do you run?"
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <label className="block text-slate-200" htmlFor="message">
+                          What would you like help with?
+                        </label>
+                        <textarea
+                          id="message"
+                          rows={3}
+                          className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-xs text-slate-100 outline-none focus:border-indigo-400"
+                          placeholder="Example: monthly bookkeeping, payroll, business formation, or clean-up."
+                        />
+                      </div>
+                      <Button type="submit" size="sm" className="w-full text-xs">
+                        <Calendar className="mr-2 h-3 w-3" />
+                        Request my free 30-minute consultation
+                      </Button>
+                    </form>
+                    {formStatus && (
+                      <p className="text-[0.7rem] text-emerald-300">{formStatus}</p>
+                    )}
+                    <p className="text-[0.7rem] text-slate-400">
+                      This demo form does not send real emails by itself. Connect it to your email
+                      provider, calendar link, or CRM to automate confirmations.
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="bg-slate-950">
+          <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 text-[0.7rem] text-slate-400 md:flex-row md:items-center md:justify-between">
+            <p>
+              © {new Date().getFullYear()} ClarityBooks Financial Records. Replace this name and
+              copy with your own firm details.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <span>info@yourfirm.com</span>
+              <span>(555) 123-4567</span>
+              <span>Mon–Fri, 8:00 AM – 6:00 PM</span>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
+  );
+};
+
+export default App;
