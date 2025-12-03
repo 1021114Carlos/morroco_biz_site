@@ -7,19 +7,20 @@
   <style>
     :root {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      /* slightly lighter background */
-      background: #020b1f;
+      /* lighter global background */
+      background: #0b1120;
       color: #e5e7eb;
     }
 
     body {
       margin: 0;
+      background: #0b1120; /* ensure page background is lighter everywhere */
     }
 
     .page {
       min-height: 100vh;
-      /* slightly lighter gradient */
-      background: radial-gradient(circle at top, #243047 0, #020b1f 55%);
+      /* lighter gradient background for the whole site */
+      background: radial-gradient(circle at top, #1f2937 0, #0b1120 60%);
     }
 
     /* Header */
@@ -29,7 +30,7 @@
       top: 0;
       z-index: 20;
       backdrop-filter: blur(10px);
-      background: rgba(2, 11, 31, 0.9);
+      background: rgba(11, 17, 32, 0.9); /* lighter than before */
       border-bottom: 1px solid #1f2937;
     }
 
@@ -122,7 +123,7 @@
     .preview-toggle {
       border-radius: 999px;
       border: 1px solid #4b5563;
-      background: #020b1f;
+      background: #0b1120;
       color: #e5e7eb;
       padding: 0.3rem 0.8rem;
       font-size: 0.7rem;
@@ -142,7 +143,7 @@
     }
 
     .section-alt {
-      background: rgba(15, 23, 42, 0.7);
+      background: rgba(30, 41, 59, 0.7); /* slightly lighter panel */
       border-radius: 1.5rem;
     }
 
@@ -185,7 +186,7 @@
       padding: 0.25rem 0.75rem;
       border-radius: 999px;
       border: 1px solid #4b5563;
-      background: #020b1f;
+      background: #0b1120;
       font-size: 0.75rem;
       color: #9ca3af;
     }
@@ -237,7 +238,7 @@
     /* Cards, grid */
 
     .card {
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(30, 41, 59, 0.9); /* lighter card */
       border-radius: 1rem;
       padding: 1.4rem;
       border: 1px solid #1f2937;
@@ -259,7 +260,7 @@
       padding: 0.8rem;
       border-radius: 0.75rem;
       border: 1px solid #374151;
-      background: #020b1f;
+      background: #0b1120;
       font-size: 0.8rem;
     }
 
@@ -289,7 +290,7 @@
 
     .tiny {
       font-size: 0.7rem;
-      color: #6b7280;
+      color: #cbd5f5;
       margin-top: 0.6rem;
     }
 
@@ -359,15 +360,16 @@
       padding: 0;
       margin: 0;
       font-size: 0.85rem;
+      display: grid;
+      row-gap: 0.5rem;
     }
 
-    /* updated layout: nice two-column alignment */
+    /* 2-column layout exactly like you showed */
     .snapshot-list li {
       display: grid;
-      grid-template-columns: minmax(0, 1.6fr) auto;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.1fr);
       column-gap: 1.5rem;
       align-items: center;
-      margin-bottom: 0.5rem;
     }
 
     .snapshot-list li span:first-child {
@@ -376,7 +378,7 @@
 
     .snapshot-list li span.bold {
       text-align: right;
-      white-space: nowrap;
+      white-space: nowrap; /* keep right column from wrapping so it stays aligned */
     }
 
     /* FAQ */
@@ -391,7 +393,7 @@
     .faq-item {
       border-radius: 0.8rem;
       border: 1px solid #1f2937;
-      background: #020b1f;
+      background: #0b1120;
     }
 
     .faq-question {
@@ -467,7 +469,7 @@
     .form textarea {
       border-radius: 0.5rem;
       border: 1px solid #374151;
-      background: #020b1f;
+      background: #0b1120;
       color: #e5e7eb;
       padding: 0.4rem 0.6rem;
       font-size: 0.8rem;
@@ -489,7 +491,7 @@
 
     .footer {
       border-top: 1px solid #111827;
-      background: #020b1f;
+      background: #0b1120;
     }
 
     .footer-inner {
@@ -810,7 +812,7 @@
             </form>
             <p id="form-status" class="success" style="display:none;"></p>
             <p class="tiny">
-              This demo form does not send real emails by itself. 
+              This demo form does not send real emails by itself.
             </p>
           </div>
         </div>
