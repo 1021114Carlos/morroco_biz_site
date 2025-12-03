@@ -2,38 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Cutting Edge Bookkeeping Financial Records</title>
+  <title>Cutting Edge Bookeeping Financial Records</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <style>
-    /* --------------------------------------------------
-      GLOBAL COLOR FIX — LIGHTER BACKGROUND
-    -------------------------------------------------- */
     :root {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      /* MUCH lighter than before */
+      background: #111827;
       color: #e5e7eb;
     }
 
     body {
       margin: 0;
-      background: #1d2433; /* lighter navy background */
+      background: #111827; /* entire page background lighter */
     }
 
     .page {
       min-height: 100vh;
-      background: radial-gradient(circle at top, #3f475a 0%, #1d2433 70%);
+      /* also lighter and simpler so it’s obvious */
+      background: radial-gradient(circle at top, #1f2937 0, #111827 70%);
     }
 
-    /* --------------------------------------------------
-      HEADER
-    -------------------------------------------------- */
+    /* Header */
+
     .header {
       position: sticky;
       top: 0;
       z-index: 20;
       backdrop-filter: blur(10px);
-      background: rgba(29, 36, 51, 0.9);
-      border-bottom: 1px solid #2d3341;
+      background: rgba(15, 23, 42, 0.9); /* lighter than near-black */
+      border-bottom: 1px solid #1f2937;
     }
 
     .header-inner {
@@ -54,13 +52,13 @@
     }
 
     .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       width: 24px;
       height: 24px;
       border-radius: 999px;
       background: #4f46e5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       font-size: 0.9rem;
     }
 
@@ -76,7 +74,9 @@
     }
 
     @media (min-width: 700px) {
-      .nav { display: flex; }
+      .nav {
+        display: flex;
+      }
     }
 
     .nav button {
@@ -104,7 +104,9 @@
     }
 
     @media (min-width: 640px) {
-      .contact { display: flex; }
+      .contact {
+        display: flex;
+      }
     }
 
     .small-label {
@@ -113,23 +115,27 @@
     }
 
     .mono {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+        Consolas, "Liberation Mono", "Courier New", monospace;
       font-size: 0.8rem;
     }
 
     .preview-toggle {
       border-radius: 999px;
       border: 1px solid #4b5563;
-      background: transparent;
+      background: #111827;
       color: #e5e7eb;
       padding: 0.3rem 0.8rem;
       font-size: 0.7rem;
       cursor: pointer;
     }
 
-    /* --------------------------------------------------
-      SECTIONS
-    -------------------------------------------------- */
+    .preview-toggle:hover {
+      border-color: #a5b4fc;
+    }
+
+    /* Sections */
+
     .section {
       max-width: 1150px;
       margin: 0 auto;
@@ -137,16 +143,17 @@
     }
 
     .section-alt {
-      background: rgba(50, 60, 80, 0.65);
+      background: rgba(31, 41, 55, 0.9); /* lighter card-panel */
       border-radius: 1.5rem;
-      padding: 3rem 1rem;
     }
 
-    h2 { font-size: 1.6rem; }
+    .section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
 
-    /* --------------------------------------------------
-      HERO (Preview panel removed)
-    -------------------------------------------------- */
+    /* Hero */
+
     .hero {
       padding-top: 3.5rem;
     }
@@ -156,14 +163,11 @@
       gap: 2rem;
     }
 
-    .pill {
-      display: inline-flex;
-      padding: 0.25rem 0.75rem;
-      border-radius: 999px;
-      border: 1px solid #4b5563;
-      background: rgba(255,255,255,0.03);
-      font-size: 0.75rem;
-      color: #a1a5b1;
+    @media (min-width: 900px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1.4fr);
+        align-items: center;
+      }
     }
 
     .hero-text h1 {
@@ -171,35 +175,147 @@
       margin: 0.75rem 0;
     }
 
+    .hero-text p {
+      font-size: 0.95rem;
+      color: #d1d5db;
+      max-width: 32rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid #4b5563;
+      background: #111827;
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+
     .hero-buttons {
       margin-top: 1rem;
       display: flex;
+      flex-wrap: wrap;
       gap: 0.75rem;
     }
 
-    .btn-primary {
-      border-radius: 999px;
-      padding: 0.5rem 1.1rem;
-      font-size: 0.8rem;
-      background: #4f46e5;
-      border: none;
-      color: white;
-      cursor: pointer;
-    }
-
+    .btn-primary,
     .btn-outline {
       border-radius: 999px;
       padding: 0.5rem 1.1rem;
       font-size: 0.8rem;
-      border: 1px solid #4b5563;
-      background: transparent;
-      color: #e5e7eb;
+      border: none;
       cursor: pointer;
     }
 
-    /* --------------------------------------------------
-      SERVICES
-    -------------------------------------------------- */
+    .btn-primary {
+      background: #4f46e5;
+      color: #e5e7eb;
+    }
+
+    .btn-primary:hover {
+      background: #4338ca;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #e5e7eb;
+      border: 1px solid #4b5563;
+    }
+
+    .btn-outline:hover {
+      border-color: #a5b4fc;
+    }
+
+    .hero-meta {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+
+    /* Cards, grid */
+
+    .card {
+      background: #1f2937; /* lighter than before */
+      border-radius: 1rem;
+      padding: 1.4rem;
+      border: 1px solid #111827;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.6);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .preview-on .card-highlight {
+      box-shadow: 0 0 0 1px rgba(129, 140, 248, 0.8);
+    }
+
+    .muted {
+      color: #9ca3af;
+      font-size: 0.85rem;
+    }
+
+    .mini-card {
+      margin-top: 0.9rem;
+      padding: 0.8rem;
+      border-radius: 0.75rem;
+      border: 1px solid #374151;
+      background: #111827;
+      font-size: 0.8rem;
+    }
+
+    .bold {
+      font-weight: 600;
+    }
+
+    .quote {
+      margin-top: 0.5rem;
+      font-style: italic;
+      color: #9ca3af;
+    }
+
+    .tags {
+      margin-top: 0.6rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tags span {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      background: #111827;
+    }
+
+    .tiny {
+      font-size: 0.7rem;
+      color: #cbd5f5;
+      margin-top: 0.6rem;
+    }
+
+    /* Services */
+
+    .section-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (min-width: 800px) {
+      .section-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+    }
+
+    .section-header p {
+      max-width: 30rem;
+      font-size: 0.9rem;
+    }
+
     .grid {
       display: grid;
       gap: 1rem;
@@ -207,305 +323,561 @@
 
     @media (min-width: 800px) {
       .grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
-    .card {
-      background: #252d3c;
-      border-radius: 1rem;
-      padding: 1.4rem;
-      border: 1px solid #181e29;
+    .card ul {
+      padding-left: 1rem;
+      font-size: 0.85rem;
+      color: #d1d5db;
     }
 
-    /* --------------------------------------------------
-      ABOUT — Snapshot Section FIXED
-    -------------------------------------------------- */
+    .card li {
+      margin-bottom: 0.25rem;
+    }
+
+    /* About */
+
+    .about-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 900px) {
+      .about-grid {
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      }
+    }
+
+    .about-grid p {
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+
     .snapshot-list {
       list-style: none;
       padding: 0;
       margin: 0;
+      font-size: 0.85rem;
     }
 
-    /* TRUE two-column layout */
+    /* TRUE two-column layout with fixed left column width */
     .snapshot-list li {
-      display: grid;
-      grid-template-columns: 270px 1fr;
-      column-gap: 2rem;
-      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.45rem;
+    }
+
+    .snapshot-list li span:first-child {
+      flex: 0 0 260px;   /* label column width */
+      text-align: left;
     }
 
     .snapshot-list li span.bold {
+      flex: 1;
+      text-align: left;  /* values line up vertically like your example */
       font-weight: 600;
-      white-space: nowrap;
     }
 
-    /* --------------------------------------------------
-      FAQ
-    -------------------------------------------------- */
+    /* FAQ */
+
+    .faq-list {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
     .faq-item {
       border-radius: 0.8rem;
-      background: #1c2230;
-      border: 1px solid #2d3650;
+      border: 1px solid #1f2937;
+      background: #111827;
     }
 
     .faq-question {
       width: 100%;
       padding: 0.75rem 1rem;
-      background: none;
+      background: transparent;
       border: none;
-      color: white;
-      cursor: pointer;
+      color: #e5e7eb;
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      text-align: left;
       font-size: 0.9rem;
     }
 
     .faq-answer {
-      padding: 0 1rem 1rem;
-      display: none;
+      padding: 0 1rem 0.75rem;
       font-size: 0.85rem;
+      color: #d1d5db;
+      display: none;
     }
 
     .faq-item.open .faq-answer {
       display: block;
     }
 
-    /* --------------------------------------------------
-      FORM
-    -------------------------------------------------- */
-    .form input,
-    .form textarea {
-      width: 100%;
-      border-radius: 0.5rem;
-      border: 1px solid #4b5563;
-      background: rgba(255,255,255,0.03);
-      color: white;
-      padding: 0.5rem;
-      margin-top: 0.3rem;
+    /* Consultation */
+
+    .consult-grid {
+      display: grid;
+      gap: 1.5rem;
     }
 
-    /* --------------------------------------------------
-      FOOTER
-    -------------------------------------------------- */
+    @media (min-width: 900px) {
+      .consult-grid {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      }
+    }
+
+    .consult-grid p {
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+
+    .consult-points {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+    }
+
+    .consult-points li {
+      margin-bottom: 0.3rem;
+    }
+
+    /* Form */
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      font-size: 0.8rem;
+    }
+
+    .form label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .form input,
+    .form textarea {
+      border-radius: 0.5rem;
+      border: 1px solid #374151;
+      background: #111827;
+      color: #e5e7eb;
+      padding: 0.4rem 0.6rem;
+      font-size: 0.8rem;
+    }
+
+    .form input:focus,
+    .form textarea:focus {
+      outline: none;
+      border-color: #a5b4fc;
+    }
+
+    .success {
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      color: #6ee7b7;
+    }
+
+    /* Footer */
+
     .footer {
-      border-top: 1px solid #282e3c;
-      background: #1d2433;
-      padding: 1rem;
+      border-top: 1px solid #111827;
+      background: #111827;
     }
 
     .footer-inner {
       max-width: 1150px;
       margin: 0 auto;
+      padding: 1rem;
       font-size: 0.75rem;
-      color: #a1a5b1;
+      color: #9ca3af;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    @media (min-width: 800px) {
+      .footer-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .footer-meta {
+      display: flex;
       flex-wrap: wrap;
+      gap: 0.75rem;
     }
   </style>
-
 </head>
-
-<body>
-<div class="page">
-
-  <!-- HEADER -->
-  <header class="header">
-    <div class="header-inner">
-      <div class="brand" onclick="scrollToSection('hero')">
-        <span class="brand-logo">✔</span>
-        <span class="brand-name">Cutting Edge Bookkeeping Financial Records</span>
-      </div>
-
-      <nav class="nav">
-        <button onclick="scrollToSection('services')">Services</button>
-        <button onclick="scrollToSection('about')">About</button>
-        <button onclick="scrollToSection('faq')">Questions</button>
-        <button onclick="scrollToSection('consultation')">Free Consultation</button>
-      </nav>
-
-      <div class="header-right">
-        <div class="contact">
-          <span class="small-label">Call or text</span>
-          <span class="mono">(305) 924-2377</span>
+<body class="preview-on">
+  <div class="page">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="brand" onclick="scrollToSection('hero')">
+          <span class="brand-logo">✔</span>
+          <span class="brand-name">Cutting Edge Bookkeping Financial Records</span>
         </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section id="hero" class="section hero">
-    <div class="hero-inner">
-      <div class="hero-text">
-        <div class="pill">Bookkeeping • Payroll • Business Formation • Compliance</div>
-
-        <h1>Your numbers, handled. Your business, free to grow.</h1>
-
-        <p>
-          We provide clear, reliable bookkeeping and back-office support
-          so you can stop worrying about spreadsheets and focus on growth.
-        </p>
-
-        <div class="hero-buttons">
-          <button class="btn-primary" onclick="scrollToSection('consultation')">
-            Book your free 30-minute consultation
-          </button>
-          <button class="btn-outline" onclick="scrollToSection('services')">
-            View services
+        <nav class="nav">
+          <button onclick="scrollToSection('services')">Services</button>
+          <button onclick="scrollToSection('about')">About</button>
+          <button onclick="scrollToSection('faq')">Questions</button>
+          <button onclick="scrollToSection('consultation')">Free Consultation</button>
+        </nav>
+        <div class="header-right">
+          <div class="contact">
+            <span class="small-label">Call or text</span>
+            <span class="mono">(305) 924-2377</span>
+          </div>
+          <button class="preview-toggle" onclick="togglePreview(this)">
+            Hide Preview Highlights
           </button>
         </div>
       </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- SERVICES -->
-  <section id="services" class="section">
-    <h2>Services</h2>
+    <main>
+      <!-- Hero -->
+      <section id="hero" class="section hero">
+        <div class="hero-inner">
+          <div class="hero-text">
+            <div class="pill">
+              Bookkeeping • Payroll • Business Formation • Compliance
+            </div>
+            <h1>Your numbers, handled. Your business, free to grow.</h1>
+            <p>
+              We provide clear, reliable bookkeeping and back-office support so you can
+              stop worrying about spreadsheets and start focusing on sales, service,
+              and growth. Bilingual support available in English and Spanish.
+            </p>
+            <div class="hero-buttons">
+              <button class="btn-primary" onclick="scrollToSection('consultation')">
+                Book your free 30-minute consultation
+              </button>
+              <button class="btn-outline" onclick="scrollToSection('services')">
+                View services
+              </button>
+            </div>
+            <div class="hero-meta">
+              <span>✔ 15+ years combined experience</span>
+              <span>🌐 Remote-friendly & bilingual (EN/ES)</span>
+              <span>🔒 Confidential & secure workflows</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <div class="grid">
-      <div class="card">
-        <h3>Bookkeeping & Financial Records</h3>
-        <ul>
-          <li>✔ Monthly bookkeeping</li>
-          <li>✔ Clean-up & catch-up</li>
-          <li>✔ P&L, Balance Sheet, Cashflow</li>
-        </ul>
-      </div>
+      <!-- Services -->
+      <section id="services" class="section">
+        <div class="section-header">
+          <div>
+            <h2>Services</h2>
+            <p>
+              Everything you need to stay organized, compliant, and confident about
+              your business finances.
+            </p>
+          </div>
+          <p class="muted">
+            All services are offered in English or Spanish, in person or remotely.
+          </p>
+        </div>
+        <div class="grid">
+          <div class="card card-highlight">
+            <h3>Bookkeeping &amp; Financial Records</h3>
+            <p>
+              Monthly reconciliations, categorized transactions, and clean financial
+              statements so you always know where your business stands.
+            </p>
+            <ul>
+              <li>✔ Monthly/quarterly bookkeeping</li>
+              <li>✔ Clean-up &amp; catch-up projects</li>
+              <li>✔ Profit &amp; loss, balance sheet, cash-flow</li>
+            </ul>
+          </div>
+          <div class="card card-highlight">
+            <h3>Payroll Services</h3>
+            <p>
+              Accurate, on-time payroll for you and your team, including tax
+              withholdings and filings.
+            </p>
+            <ul>
+              <li>✔ Employee &amp; contractor payroll</li>
+              <li>✔ Payroll tax payments &amp; filings</li>
+              <li>✔ Year-end forms (W-2, 1099)</li>
+            </ul>
+          </div>
+          <div class="card card-highlight">
+            <h3>Business Formation</h3>
+            <p>
+              Guidance to choose and set up the right business structure for your
+              goals.
+            </p>
+            <ul>
+              <li>✔ LLC and corporation setup support</li>
+              <li>✔ Coordination with tax professionals</li>
+              <li>✔ Registration and documentation guidance</li>
+            </ul>
+          </div>
+          <div class="card card-highlight">
+            <h3>Compliance &amp; Advisory</h3>
+            <p>
+              Ongoing support to help you stay organized, compliant, and ready for
+              growth.
+            </p>
+            <ul>
+              <li>✔ Sales &amp; use tax guidance</li>
+              <li>✔ Basic compliance reminders</li>
+              <li>✔ Simple, clear financial insights</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-      <div class="card">
-        <h3>Payroll Services</h3>
-        <ul>
-          <li>✔ Employee & contractor payroll</li>
-          <li>✔ Tax filings</li>
-          <li>✔ Year-end W-2 & 1099</li>
-        </ul>
-      </div>
+      <!-- About -->
+      <section id="about" class="section section-alt">
+        <div class="about-grid">
+          <div>
+            <h2>About the Firm</h2>
+            <p>
+              TransparencyBooks Financial Records was created to give small business owners
+              a partner they can trust with their day-to-day finances. We understand
+              that bookkeeping, payroll, and compliance can feel overwhelming when you
+              are trying to run operations, manage a team, and serve your customers.
+            </p>
+            <p>
+              Our mission is simple: keep your books clean, your records organized, and
+              your questions answered in plain language. Whether you are just launching
+              your business or have been operating for years, we meet you where you are
+              and build a system that fits.
+            </p>
+            <p>
+              We also understand the importance of language access. That is why we
+              offer bilingual support in English and Spanish, so you never feel left
+              out of the conversation about your own business.
+            </p>
+          </div>
+          <div class="card card-highlight">
+            <h3>Fast Snapshot</h3>
+            <ul class="snapshot-list">
+              <li>
+                <span>Experience with small businesses</span>
+                <span class="bold">15+ years</span>
+              </li>
+              <li>
+                <span>Languages</span>
+                <span class="bold">English &amp; Spanish</span>
+              </li>
+              <li>
+                <span>Engagement style</span>
+                <span class="bold">Remote &amp; local-ready</span>
+              </li>
+              <li>
+                <span>Ideal client</span>
+                <span class="bold">Service &amp; trade businesses</span>
+              </li>
+            </ul>
+            <p class="tiny">
+              Customize this box with your real city, license details, and any
+              certifications you want to highlight.
+            </p>
+          </div>
+        </div>
+      </section>
 
-      <div class="card">
-        <h3>Business Formation</h3>
-        <ul>
-          <li>✔ LLC and corporation setup</li>
-          <li>✔ EIN & registration guidance</li>
-          <li>✔ Coordination with tax pros</li>
-        </ul>
-      </div>
+      <!-- FAQ -->
+      <section id="faq" class="section">
+        <h2>5 key questions clients ask</h2>
+        <p class="muted">
+          (FAQ) These are the conversations we have with almost every new client. Feel free
+          to adjust the questions and answers to match your exact process.
+        </p>
+        <div class="faq-list">
+          <div class="faq-item card-highlight">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              <span>How do I know if my business is ready to outsource bookkeeping?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              If you are spending more time chasing receipts, reconciling accounts, or
+              worrying about compliance than actually running your business, you are
+              ready. We help you move your books into a clean, organized system so you
+              can focus on growth.
+            </div>
+          </div>
+          <div class="faq-item card-highlight">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              <span>Do you work remotely or only with local businesses?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              We work securely with businesses both locally and remotely. We use modern
+              accounting tools so you can upload documents, review reports, and
+              communicate with us from anywhere.
+            </div>
+          </div>
+          <div class="faq-item card-highlight">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              <span>What software do you use (QuickBooks, Xero, etc.)?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              We primarily work with leading cloud-based accounting platforms such as
+              QuickBooks Online, but we can review your current setup and
+              recommend the best option for your size and industry.
+            </div>
+          </div>
+          <div class="faq-item card-highlight">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              <span>How is pricing structured for your services?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              After a short discovery call, we provide a clear, written quote based on
+              transaction volume, payroll complexity, and any additional services such
+              as business formation or compliance support. No hidden fees.
+            </div>
+          </div>
+          <div class="faq-item card-highlight">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              <span>What do you need from me to get started?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              During your free 30-minute consultation, we will ask a few targeted
+              questions about your business, current accounting systems, and goals.
+              Then we will request secure access to your bank statements, prior
+              financials, and any payroll or tax accounts.
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <div class="card">
-        <h3>Compliance & Advisory</h3>
-        <ul>
-          <li>✔ Sales & use tax</li>
-          <li>✔ Compliance reminders</li>
-          <li>✔ Clear financial insights</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+      <!-- Consultation -->
+      <section id="consultation" class="section section-alt">
+        <div class="consult-grid">
+          <div>
+            <h2>Schedule your free 30-minute consultation</h2>
+            <p>
+              In this no-pressure call, we will review where your books are today,
+              what tools you are using, and what support would make the biggest
+              difference for you over the next 3–6 months.
+            </p>
+            <ul class="consult-points">
+              <li>✔ 30 minutes focused entirely on your business questions.</li>
+              <li>✔ No obligation to sign up for ongoing services.</li>
+              <li>✔ Clear next steps if we are a good fit to work together.</li>
+            </ul>
+          </div>
+          <div class="card card-highlight">
+            <h3>Request your free session</h3>
+            <form class="form" onsubmit="submitConsultation(event)">
+              <label>
+                Name
+                <input type="text" name="name" required placeholder="Your full name" />
+              </label>
+              <label>
+                Email
+                <input type="email" name="email" required placeholder="you@example.com" />
+              </label>
+              <label>
+                Business name (optional)
+                <input
+                  type="text"
+                  name="business"
+                  placeholder="What type of business do you run?"
+                />
+              </label>
+              <label>
+                What would you like help with?
+                <textarea
+                  name="message"
+                  rows="3"
+                  placeholder="Example: monthly bookkeeping, payroll, business formation, or clean-up."
+                ></textarea>
+              </label>
+              <button class="btn-primary" type="submit">
+                Request my free 30-minute consultation
+              </button>
+            </form>
+            <p id="form-status" class="success" style="display:none;"></p>
+            <p class="tiny">
+              This demo form does not send real emails by itself.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
 
-  <!-- ABOUT SECTION -->
-  <section id="about" class="section section-alt">
-    <div class="about-grid">
-
-      <div>
-        <h2>About the Firm</h2>
-
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-inner">
         <p>
-          TransparencyBooks Financial Records was created to give small business owners
-          a partner they can trust with their day-to-day finances.
+          © <span id="year"></span> Cutting Edge Bookkeeping Records. 
         </p>
-      </div>
-
-      <div class="card">
-        <h3>Fast Snapshot</h3>
-
-        <ul class="snapshot-list">
-          <li><span>Experience with small businesses</span><span class="bold">15+ years</span></li>
-          <li><span>Languages</span><span class="bold">English & Spanish</span></li>
-          <li><span>Engagement style</span><span class="bold">Remote & local-ready</span></li>
-          <li><span>Ideal client</span><span class="bold">Service & trade businesses</span></li>
-        </ul>
-
-        <p style="font-size:0.75rem; color:#cbd5f5; margin-top:1rem;">
-          Customize this box with your real city, license details,
-          and any certifications you want to highlight.
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="section">
-    <h2>5 Key Questions Clients Ask</h2>
-
-    <div class="faq-list">
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">How do I know if I'm ready to outsource?<span>+</span></button>
-        <div class="faq-answer">
-          If you spend more time fixing receipts than growing your business, you’re ready.
+        <div class="footer-meta">
+          <span>info@yourfirm.com</span>
+          <span>(305) 924-2377</span>
+          <span>Mon–Fri, 9:00 AM – 4:00 PM</span>
         </div>
       </div>
+    </footer>
+  </div>
 
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Do you work remotely?<span>+</span></button>
-        <div class="faq-answer">
-          Yes — fully remote or local support available.
-        </div>
-      </div>
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-    </div>
-  </section>
+    function scrollToSection(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
 
-  <!-- CONSULTATION -->
-  <section id="consultation" class="section section-alt">
-    <h2>Schedule Your Free 30-Minute Consultation</h2>
+    function togglePreview(button) {
+      document.body.classList.toggle("preview-on");
+      if (document.body.classList.contains("preview-on")) {
+        button.textContent = "Hide Preview Highlights";
+      } else {
+        button.textContent = "Show Preview Highlights";
+      }
+    }
 
-    <div class="card">
-      <form class="form" onsubmit="submitConsultation(event)">
-        <label>Name <input type="text" name="name" required></label>
-        <label>Email <input type="email" name="email" required></label>
-        <label>Message <textarea name="message" rows="3"></textarea></label>
-        <button class="btn-primary" type="submit">Request Consultation</button>
-      </form>
+    function toggleFaq(button) {
+      var item = button.parentElement;
+      var list = item.parentElement.children;
+      // Close all
+      for (var i = 0; i < list.length; i++) {
+        list[i].classList.remove("open");
+        var q = list[i].querySelector(".faq-question span:last-child");
+        if (q) q.textContent = "+";
+      }
+      // Toggle clicked
+      if (!item.classList.contains("open")) {
+        item.classList.add("open");
+        var icon = button.querySelector("span:last-child");
+        if (icon) icon.textContent = "−";
+      }
+    }
 
-      <p id="form-status" style="display:none; color:#6ee7b7; margin-top:0.5rem;"></p>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-inner">
-      © <span id="year"></span> Cutting Edge Bookkeeping Records
-      <span>info@yourfirm.com</span>
-      <span>(305) 924-2377</span>
-    </div>
-  </footer>
-
-</div>
-
-<script>
-document.getElementById("year").textContent = new Date().getFullYear();
-
-function scrollToSection(id) {
-  document.getElementById(id).scrollIntoView({ behavior: "smooth" });
-}
-
-function toggleFaq(btn) {
-  const item = btn.parentElement;
-  const open = item.classList.contains("open");
-  document.querySelectorAll(".faq-item").forEach(i => i.classList.remove("open"));
-  if (!open) item.classList.add("open");
-}
-
-function submitConsultation(event) {
-  event.preventDefault();
-  const status = document.getElementById("form-status");
-  status.textContent = "Thanks! We’ll email you shortly.";
-  status.style.display = "block";
-  event.target.reset();
-}
-</script>
-
+    function submitConsultation(event) {
+      event.preventDefault();
+      var status = document.getElementById("form-status");
+      status.textContent =
+        "Thanks! Your request was received. We will email you to confirm your free 30-minute consultation.";
+      status.style.display = "block";
+      event.target.reset();
+    }
+  </script>
 </body>
 </html>
